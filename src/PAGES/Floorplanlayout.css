@@ -1,0 +1,15 @@
+.Mainwrapper{
+    display: flex;
+ height: 100%;
+justify-content: center;
+margin-top: 40px;
+
+}
+.TextfiledFlex{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   
+}
+.TextfieldStyle{
+}
