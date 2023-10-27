@@ -1,9 +1,10 @@
 import React from 'react'
 import Floorplanlayout from './PAGES/Floorplanlayout'
+import './app.css'
 
 const App = () => {
   return (
-    <div>
+    <div >
       <Floorplanlayout />
     </div>
   )

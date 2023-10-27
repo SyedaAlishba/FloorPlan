@@ -6,6 +6,7 @@ margin-top: 40px;
 .txtStyle{
     font-weight: bold;
     font-family: Arial, sans-serif;
+    color: white;
    
 }
 .Mainwrapper{
@@ -27,6 +28,7 @@ width: 100%;
     font-family: Arial, sans-serif;
 font-size: 18px;
 margin-bottom: 7px;
+color: white;
 }
 .Flexdiscrip{
     display: flex;
@@ -35,8 +37,8 @@ margin-bottom: 7px;
     margin-top: 38px;
 }
 .TextfieldStyle{
-    background-color: rgb(230, 228, 228);
-    width: 85%;
+    background-color: white;
+    width: 100%;
     
 }
 
@@ -44,4 +46,9 @@ margin-bottom: 7px;
 display: flex;
 justify-content: space-between;
 }
+.btnFlex{
+    display: flex;
+    justify-content: space-between;
+}
+
 

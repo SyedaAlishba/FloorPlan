@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Select from "react-select";
 import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import logoImg from "../../src/Images/logo.PNG"
+import logoImg from "../../src/Images/logo33-removebg-preview.png"
 
 
 const Floorplanlayout = () => {
@@ -28,10 +28,23 @@ const Floorplanlayout = () => {
   const [print, setPrint] = useState([]);
 
   const buttonStyle = {
-    backgroundColor: 'lightblue',
+    color: '#1f4879',
     borderRadius: '10px', 
     border: '2px solid lightblue',
   };
+  const buttonStyleSubmit = {
+    color: 'white',
+    borderRadius: '10px', 
+    border: '2px solid lightblue',
+    textTransform: 'none',
+
+  
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    console.log('Form submitted with data:', { name, date, address, remarks });
+  };
+ 
 
   return (
 
@@ -57,9 +70,13 @@ const Floorplanlayout = () => {
         </Box>
     </header>
   </Box>
+<form  onSubmit={handleSubmit}>
+
     <Box className="Mainwrapper">
         
-      <Box className="TextfiledFlex">
+      <Box className="TextfiledFlex"  >
+        <Box>
+        <label style={{margin:"0px", padding:"0px",color:"white",fontSize:"18px"}} >Name</label>
         <TextField
           value={name}
           onChange={(e) => {
@@ -68,10 +85,12 @@ const Floorplanlayout = () => {
           }}
           className="TextfieldStyle"
           id="outlined-basic"
-          label="Name"
           variant="outlined"
         />
 
+        </Box>
+        <Box>
+        <label style={{margin:"0px", padding:"0px",color:"white",fontSize:"18px"}} >Date</label>
         <TextField
           value={date}
           onChange={(e) => {
@@ -80,10 +99,12 @@ const Floorplanlayout = () => {
           }}
           className="TextfieldStyle"
           id="outlined-basic"
-          label="Date"
           variant="outlined"
         />
+</Box>
 
+<Box>
+        <label style={{margin:"0px", padding:"0px",color:"white",fontSize:"18px"}} >Address</label>
         <TextField
           value={address}
           onChange={(e) => {
@@ -92,10 +113,12 @@ const Floorplanlayout = () => {
           }}
           className="TextfieldStyle"
           id="outlined-basic"
-          label="Address"
           variant="outlined"
         />
 
+</Box>
+<Box>
+        <label style={{margin:"0px", padding:"0px",color:"white",fontSize:"18px"}} >Remarks</label>
         <TextField
           value={remarks}
           onChange={(e) => {
@@ -104,10 +127,9 @@ const Floorplanlayout = () => {
           }}
           className="TextfieldStyle"
           id="outlined-basic"
-          label="Remarks"
           variant="outlined"
         />
-
+</Box>
         <Box>
             <div  >
 
@@ -128,9 +150,9 @@ const Floorplanlayout = () => {
         {count?.map((item, index) => (
           <Destription location={location} print={print[index]} />
         ))}
-        <Box>
+        <Box className="btnFlex">
           <Button
-            className="btnStyle"
+           
             onClick={() => {
               setCount([...count, count.push(1)]);
             }}
@@ -139,9 +161,21 @@ const Floorplanlayout = () => {
           >
             <AddIcon />
           </Button>
+          <Box >
+
+          <Button style={buttonStyleSubmit} 
+           type="submit"
+           onClick={handleSubmit}
+           >
+        Submit
+      </Button>
+          </Box>
+      
         </Box>
       </Box>
+      
     </Box>
+</form>
   </>
   );
 };
@@ -156,13 +190,15 @@ const Destription = (props) => {
 
       <Box>
         <Box className="Descriptionflex">
-
+        <Box>
+        <label style={{margin:"0px", padding:"0px",color:"white",fontSize:"18px"}} >Description</label>
           <TextField
             className="TextfieldStyle"
             id="outlined-basic"
-            label="Description"
             variant="outlined"
           />
+          </Box>
+         
         </Box>
       </Box>
     </Box>
