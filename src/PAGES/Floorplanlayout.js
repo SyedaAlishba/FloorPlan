@@ -12,8 +12,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 
-import jsPDF from "jspdf";
-import "jspdf-autotable"; 
+
 
 
 const Floorplanlayout = () => {
@@ -92,6 +91,9 @@ const Floorplanlayout = () => {
     setDescriptionArr(updatedDescriptionArr);
   };
 
+ 
+  
+
   // const handlePDFExport = () => {
   //   // Create a new jsPDF instance
   //   const doc = new jsPDF();
@@ -140,6 +142,7 @@ const Floorplanlayout = () => {
     formData.append("name", name);
     formData.append("address", address);
     formData.append("remarks", remarks);
+    formData.append("date", date);
     // formData.append("remarks", location);
 
     if (mainImageFile) {
@@ -179,7 +182,6 @@ const Floorplanlayout = () => {
 
     // handlePDFExport()
 
-
     try {
       const response = await axios.post("http://127.0.0.1:3000/api/v1/floorplan", formData, {
         headers: {
@@ -193,12 +195,13 @@ const Floorplanlayout = () => {
     } catch (error) {
       console.error("Error:", error);
       toast.error("Something went wrong!")
-
     }
   };
 
   return (
     <>
+    <Box style={{backgroundColor:"#7393B3", margin:"0px", padding:"0px"}}>
+
       <Box>
         <ToastContainer position="top-right" />
         {/* Same as */}
@@ -386,6 +389,8 @@ const Floorplanlayout = () => {
           </Box>
         </Box>
       </form>
+    </Box>
+
     </>
   );
 };
