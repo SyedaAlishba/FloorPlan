@@ -47,6 +47,9 @@ const Floorplanlayout = () => {
   // const [imgArr, setImgArr] = useState([]);
 
 
+
+
+
   const buttonStyle = {
     color: "#1f4879",
     borderRadius: "10px",
@@ -91,8 +94,8 @@ const Floorplanlayout = () => {
     setDescriptionArr(updatedDescriptionArr);
   };
 
- 
-  
+
+
 
   // const handlePDFExport = () => {
   //   // Create a new jsPDF instance
@@ -150,7 +153,7 @@ const Floorplanlayout = () => {
     } else {
       formData.append("mainImage", "");
     }
-    
+
 
 
     for (const selectedOption of locationArr) {
@@ -161,7 +164,7 @@ const Floorplanlayout = () => {
       formData.append("description", desc);
     }
 
-  
+
     for (const img of imgFiles) {
       if (img) {
         formData.append("img", img);
@@ -200,196 +203,211 @@ const Floorplanlayout = () => {
 
   return (
     <>
-    <Box style={{backgroundColor:"#7393B3", margin:"0px", padding:"0px"}}>
+      <Box style={{ backgroundColor: "#7393B3", margin: "0px", padding: "0px" }}>
 
-      <Box>
-        <ToastContainer position="top-right" />
-        {/* Same as */}
-        <ToastContainer />
-        <header className="headerWrapper">
-          <Box>
-            <img src={logoImg} />
-          </Box>
-          <Box>
-            <Box className="txtStyle">
-              <p>
-                BUDDYFECTS PTE. LTD.
-                <br />
-                UEN: 202318717Z
-                <br />
-                1003 BUKIT MERAH
-                <br />
-                CENTRAL
-                <br />
-                #07-43
-                <br />
-                SINGAPORE (159836)
-              </p>
-            </Box>
-          </Box>
-        </header>
-      </Box>
-      <form onSubmit={handleSubmit}>
-        <Box className="Mainwrapper">
-          <Box className="TextfiledFlex">
+        <Box>
+          <ToastContainer position="top-right" />
+          {/* Same as */}
+          <ToastContainer />
+          <header className="headerWrapper">
             <Box>
-              <label
-                style={{
-                  margin: "0px",
-                  padding: "0px",
-                  color: "white",
-                  fontSize: "18px",
-                }}
-              >
-                Name
-              </label>
-              <TextField
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                className="TextfieldStyle"
-                id="outlined-basic"
-                variant="outlined"
-              />
+              <img src={logoImg} />
             </Box>
             <Box>
-              <label
-                style={{
-                  margin: "0px",
-                  padding: "0px",
-                  color: "white",
-                  fontSize: "18px",
-                }}
-              >
-                Date
-              </label>
-              <div style={{ display: "grid", width: "92%" }}>
-                <DatePicker
-                  peekNextMonth
-                  showMonthDropdown
-                  showYearDropdown
-                  dropdownMode="select"
-                  className="form-control"
-                  id="date"
-                  name="date"
-                  selected={date}
-                  onChange={(date) =>
-                    setDate(date)
-                  }
-                  dateFormat="yyyy-MM-dd"
-                />
-              </div>
-
+              <Box className="txtStyle">
+                <p>
+                  BUDDYFECTS PTE. LTD.
+                  <br />
+                  UEN: 202318717Z
+                  <br />
+                  1003 BUKIT MERAH
+                  <br />
+                  CENTRAL
+                  <br />
+                  #07-43
+                  <br />
+                  SINGAPORE (159836)
+                </p>
+              </Box>
             </Box>
-
-            <Box>
-              <label
-                style={{
-                  margin: "0px",
-                  padding: "0px",
-                  color: "white",
-                  fontSize: "18px",
-                }}
-              >
-                Address
-              </label>
-              <TextField
-                value={address}
-                onChange={(e) => {
-                  setAddress(e.target.value);
-                }}
-                className="TextfieldStyle"
-                id="outlined-basic"
-                variant="outlined"
-              />
-            </Box>
-            <Box>
-              <label
-                style={{
-                  margin: "0px",
-                  padding: "0px",
-                  color: "white",
-                  fontSize: "18px",
-                }}
-              >
-                Remarks
-              </label>
-              <TextField
-                value={remarks}
-                onChange={(e) => {
-                  setRemarks(e.target.value);
-                }}
-                className="TextfieldStyle"
-                id="outlined-basic"
-                variant="outlined"
-              />
-            </Box>
-            <Box gap={2} style={{ display: "flex", flexDirection: "column" }}>
-              <label
-                style={{
-                  margin: "0px",
-                  padding: "0px",
-                  color: "white",
-                  fontSize: "18px",
-                }}
-              >
-                Main Floor Image
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleMainImageChange}
-              />
-            </Box>
-            <Box>
-              <div>
-                <label className="locTxt">Location</label>
-              </div>
-              <Select
-                options={options}
-                value={location}
-                onChange={(selectedOptions) => {
-                  setLocation(selectedOptions);
-                  setLocationArr((locationArr) => [...locationArr, selectedOptions.value]);
-                }}
-              />
-            </Box>
-            {count?.map((item, index) => (
-              <Destription 
-              key={index}
-                location={location}
-                print={locationArr[index]}
-                change={handleImgChange}
-                descChange={(e) => handleDescriptionChange(e, index)} // Pass the index
-                description={descriptionArr[index]} // Use the description at the specific index
-                index={index} />
-            ))}
-            <Box className="btnFlex">
-              <Button
-                onClick={() => {
-                  setCount([...count, 1]);
-                  // setDescriptionArr([...descriptionArr, description]);
-                }}
-                color="primary"
-                style={buttonStyle}
-              >
-                <AddIcon />
-              </Button>
+          </header>
+        </Box>
+        <form onSubmit={handleSubmit}>
+          <Box className="Mainwrapper">
+            <Box className="TextfiledFlex">
               <Box>
-                <Button
-                  style={buttonStyleSubmit}
-                  type="submit"
-                  onClick={handleSubmit}
+                <label
+                  style={{
+                    margin: "0px",
+                    padding: "0px",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
                 >
-                  Submit
+                  Name
+                </label>
+                <TextField
+                placeholder="Write Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                  className="TextfieldStyle"
+                  id="outlined-basic"
+                  variant="outlined"
+                />
+              </Box>
+              <Box>
+                <label
+                  style={{
+                    margin: "0px",
+                    padding: "0px",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
+                >
+                  Date
+                </label>
+                <div style={{ display: "grid", width: "92%" }}>
+                  <DatePicker
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    className="form-control"
+                    id="date"
+                    name="date"
+                    selected={date}
+                    onChange={(date) =>
+                      setDate(date)
+                    }
+                    dateFormat="yyyy-MM-dd"
+                  />
+                </div>
+
+              </Box>
+
+              <Box>
+                <label
+                  style={{
+                    margin: "0px",
+                    padding: "0px",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
+                >
+                  Address
+                </label>
+                <TextField
+                placeholder="Write Address"
+
+                  value={address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                  className="TextfieldStyle"
+                  id="outlined-basic"
+                  variant="outlined"
+                />
+              </Box>
+              <Box>
+                <label
+                  style={{
+                    margin: "0px",
+                    padding: "0px",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
+                >
+                  Remarks
+                </label>
+                <TextField
+                placeholder="Write Remarks"
+
+                  value={remarks}
+                  onChange={(e) => {
+                    setRemarks(e.target.value);
+                  }}
+                  className="TextfieldStyle"
+                  id="outlined-basic"
+                  variant="outlined"
+                />
+              </Box>
+              <Box gap={2} style={{ display: "flex", flexDirection: "column" }}>
+
+
+
+                <label
+                  style={{
+                    margin: "0px",
+                    padding: "0px",
+                    color: "white",
+                    fontSize: "18px",
+                  }}
+                >
+                  Main Floor Image
+                </label>
+                <Box style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleMainImageChange}
+                  />
+                  {mainImageFile && (
+                    <div>
+                      <img style={{ height: "100px", width: "100px" }} src={URL.createObjectURL(mainImageFile)} alt="Selected" />
+                    </div>
+                  )}
+                </Box>
+              </Box>
+              <Box>
+                <div>
+                  <label className="locTxt">Location</label>
+                </div>
+                <Select
+                  options={options}
+                  value={location}
+                  onChange={(selectedOptions) => {
+                    setLocation(selectedOptions);
+                    setLocationArr((locationArr) => [...locationArr, selectedOptions.value]);
+                  }}
+                />
+              </Box>
+              {count?.map((item, index) => (
+                <Destription
+                  key={index}
+                  location={location}
+                  print={locationArr[index]}
+                  change={handleImgChange}
+                  descChange={(e) => handleDescriptionChange(e, index)} // Pass the index
+                  description={descriptionArr[index]} // Use the description at the specific index
+                  index={index} />
+              ))}
+              <Box className="btnFlex">
+                <Button
+                  onClick={() => {
+                    setCount([...count, 1]);
+                    // setDescriptionArr([...descriptionArr, description]);
+                  }}
+                  color="primary"
+                  style={buttonStyle}
+                >
+                  <AddIcon />
                 </Button>
+                <Box>
+                  <Button
+                    style={buttonStyleSubmit}
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
-      </form>
-    </Box>
+        </form>
+      </Box>
 
     </>
   );
@@ -398,7 +416,7 @@ const Floorplanlayout = () => {
 const Destription = (props) => {
   return (
     <Box className="Flexdiscrip">
-       <input
+      <input
         type="file"
         accept="image/*"
         onChange={(e) => props.change(e, props.index)} // Pass the index
@@ -419,6 +437,8 @@ const Destription = (props) => {
               Description
             </label>
             <TextField
+                placeholder="Write Description"
+
               className="TextfieldStyle"
               id={`outlined-basic-${props.index}`} // Use an identifier that includes the index
               variant="outlined"
