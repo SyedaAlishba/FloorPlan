@@ -4,6 +4,7 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import axios from 'axios';
 import { Tooltip } from '@mui/material';
 import Pdf from './Pdf';
+import Nav from './Nav/Nav';
 
 
 
@@ -44,7 +45,7 @@ setCurrData(foundElement)
       renderCell: (params) => {
         return (
           <img
-            src={`http://127.0.0.1:3000/public/image/users/${params.row.mainImage}`}
+            src={`http://54.226.145.28:3000/public/image/users/${params.row.mainImage}`}
             alt="Image"
             style={{ borderRadius: "5px", width: '80px', height: '50px' }}
           />
@@ -140,7 +141,7 @@ setCurrData(foundElement)
 
   const getFloorDetails = async () => {
     await axios
-      .get(`http://127.0.0.1:3000/api/v1/floorplan`, {
+      .get(`http://54.226.145.28:3000/api/v1/floorplan`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -161,6 +162,7 @@ setCurrData(foundElement)
 
   return (
     <>
+    <Nav />
       {floorData.length !== 0 ?
 
         <Box sx={{ height: '90%', width: '100%' }}>

@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
+import Nav from "../Components/Nav/Nav";
 
 
 
@@ -53,12 +54,12 @@ const Floorplanlayout = () => {
   const buttonStyle = {
     color: "#1f4879",
     borderRadius: "10px",
-    border: "2px solid lightblue",
+    border: "2px solid #1f4879",
   };
   const buttonStyleSubmit = {
-    color: "white",
+    color: "#1f4879",
     borderRadius: "10px",
-    border: "2px solid lightblue",
+    border: "2px solid #1f4879",
     textTransform: "none",
   };
   // const handleSubmit = (e) => {
@@ -69,12 +70,6 @@ const Floorplanlayout = () => {
   const handleMainImageChange = (e) => {
     setMainImageFile(e.target.files[0]);
   };
-
-  // const handleImgChange = (e) => {
-  //   const selectedFiles = e.target.files[0];
-  //   console.log("selected files are ", selectedFiles)
-  //   setImgFiles([...imgFiles, selectedFiles])
-  // };
 
 
   const handleImgChange = (e, index) => {
@@ -138,6 +133,7 @@ const Floorplanlayout = () => {
   // };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
     console.log("imgfiles are", imgFiles)
     const filteredDescriptionArr = descriptionArr.filter((desc) => desc.trim() !== "");
@@ -186,7 +182,7 @@ const Floorplanlayout = () => {
     // handlePDFExport()
 
     try {
-      const response = await axios.post("http://127.0.0.1:3000/api/v1/floorplan", formData, {
+      const response = await axios.post("http://54.226.145.28:3000/api/v1/floorplan", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -203,7 +199,8 @@ const Floorplanlayout = () => {
 
   return (
     <>
-      <Box style={{ backgroundColor: "#7393B3", margin: "0px", padding: "0px" }}>
+    <Nav />
+      <Box style={{ marginBottom: "20px", padding: "0px" }}>
 
         <Box>
           <ToastContainer position="top-right" />
@@ -221,9 +218,7 @@ const Floorplanlayout = () => {
                   UEN: 202318717Z
                   <br />
                   1003 BUKIT MERAH
-                  <br />
                   CENTRAL
-                  <br />
                   #07-43
                   <br />
                   SINGAPORE (159836)
@@ -240,14 +235,14 @@ const Floorplanlayout = () => {
                   style={{
                     margin: "0px",
                     padding: "0px",
-                    color: "white",
+                    color: "#1f4879",
                     fontSize: "18px",
                   }}
                 >
                   Name
                 </label>
                 <TextField
-                placeholder="Write Name"
+                  placeholder="Write Name"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -262,7 +257,7 @@ const Floorplanlayout = () => {
                   style={{
                     margin: "0px",
                     padding: "0px",
-                    color: "white",
+                    color: "#1f4879",
                     fontSize: "18px",
                   }}
                 >
@@ -292,14 +287,14 @@ const Floorplanlayout = () => {
                   style={{
                     margin: "0px",
                     padding: "0px",
-                    color: "white",
+                    color: "#1f4879",
                     fontSize: "18px",
                   }}
                 >
                   Address
                 </label>
                 <TextField
-                placeholder="Write Address"
+                  placeholder="Write Address"
 
                   value={address}
                   onChange={(e) => {
@@ -315,14 +310,14 @@ const Floorplanlayout = () => {
                   style={{
                     margin: "0px",
                     padding: "0px",
-                    color: "white",
+                    color: "#1f4879",
                     fontSize: "18px",
                   }}
                 >
                   Remarks
                 </label>
                 <TextField
-                placeholder="Write Remarks"
+                  placeholder="Write Remarks"
 
                   value={remarks}
                   onChange={(e) => {
@@ -341,7 +336,7 @@ const Floorplanlayout = () => {
                   style={{
                     margin: "0px",
                     padding: "0px",
-                    color: "white",
+                    color: "#1f4879",
                     fontSize: "18px",
                   }}
                 >
@@ -369,7 +364,7 @@ const Floorplanlayout = () => {
                   value={location}
                   onChange={(selectedOptions) => {
                     setLocation(selectedOptions);
-                    setLocationArr((locationArr) => [...locationArr, selectedOptions.value]);
+                    // setLocationArr((locationArr) => [...locationArr, selectedOptions.value]);
                   }}
                 />
               </Box>
@@ -387,6 +382,8 @@ const Floorplanlayout = () => {
                 <Button
                   onClick={() => {
                     setCount([...count, 1]);
+    setLocationArr([...locationArr, location.value]);
+
                     // setDescriptionArr([...descriptionArr, description]);
                   }}
                   color="primary"
@@ -421,24 +418,30 @@ const Destription = (props) => {
         accept="image/*"
         onChange={(e) => props.change(e, props.index)} // Pass the index
       />
+      {props.print &&
+
+      <Box style={{backgroundColor:"#1f4879", color:"white", borderRadius:"5px", padding:"3px", minWidth:"70px", textAlign:"center"}}>
+
       <p>{props.print}</p>
+      </Box>
+      }
 
       <Box>
         <Box className="Descriptionflex">
           <Box>
             <label
               style={{
-                margin: "0px",
                 padding: "0px",
-                color: "white",
+                color: "#1f4879",
                 fontSize: "18px",
               }}
             >
               Description
             </label>
             <TextField
-                placeholder="Write Description"
-
+              placeholder="Write Description"
+              multiline
+              rows={2}
               className="TextfieldStyle"
               id={`outlined-basic-${props.index}`} // Use an identifier that includes the index
               variant="outlined"
