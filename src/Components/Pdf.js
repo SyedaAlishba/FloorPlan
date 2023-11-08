@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
         borderRadius: "2px",
         margin: "5px",
     },
+    
     pageBreak: {
         flexBasis: "100%",
         height: 0,
