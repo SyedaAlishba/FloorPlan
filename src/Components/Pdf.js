@@ -10,6 +10,7 @@ import {
 } from "@react-pdf/renderer";
 
 import logo from "../Images/logo.png"
+import { apiConfig } from "../url";
 
 const styles = StyleSheet.create({
     page: {
@@ -25,15 +26,12 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         width: "80%",
-        // margin: 10,
-        // padding: 7
     },
     tableRow: {
-        borderTop: "1px solid #000", // Add a border to the table rows
-        borderRight: "1px solid #000", // Add a border to the table rows
-        borderLeft: "1px solid #000", // Add a border to the table rows
-        // borderBottom: "1px solid #000", // Add a border to the table rows
-        // borderRadius: "1px",
+        borderTop: "1px solid #000", 
+        borderRight: "1px solid #000", 
+        borderLeft: "1px solid #000", 
+        borderBottom: "1px solid #000", 
         flexDirection: "row",
         margin: "0px",
     },
@@ -42,19 +40,16 @@ const styles = StyleSheet.create({
         height: "100%",
         paddingTop: 7,
         paddingLeft: 2,
-        // marginBottom: 5,
         fontSize: 12,
-        // height: "50px",
         textAlign: "center",
-        borderRight: "1px solid #000", // Add a right border to the table cells
+        borderRight: "1px solid #000",
     },
     tableCellUpper: {
         flex: 1,
         width: "25%",
         padding: 7,
-        marginBottom: 5,
         fontSize: 12,
-        borderRight: "1px solid #000", // Add a right border to the table cells
+        borderRight: "1px solid #000",
 
     },
     headerCell: {
@@ -108,16 +103,12 @@ const styles = StyleSheet.create({
 
 function Pdf(props) {
     console.log(props)
-
-
-
-
     return (
         <PDFViewer style={styles.viewer}>
             <Document>
                 <Page size="A4" style={styles.page}>
                     <View style={{ width: "90%", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around" }} >
-                        <Image style={{ height: "100px", width: "100px" }} src={logo} />
+                        <Image style={{ height: "100px", width: "120px" }} src={logo} />
                         <Text style={styles.header}>Defects Report</Text>
                         <View style={styles.address}>
                             <Text>BUDDYFECTS PTE. LTD.</Text>
@@ -149,7 +140,7 @@ function Pdf(props) {
                                 : ""}</Text>
                         </View>
                     </View>
-                    <Image style={styles.image} src={`http://127.0.0.1:3000/public/image/users/${props.data?.mainImage}`} />
+                    <Image style={styles.image} src={`${apiConfig.url}/public/image/users/${props.data?.mainImage}`} />
                 </Page>
 
                 {/* Start a new page */}
@@ -176,14 +167,13 @@ function Pdf(props) {
                                     {finding?.img?.map((item, index) => (
 
                                         <Image
-                                            style={[styles.innerImage]}
-                                            src={`http://127.0.0.1:3000/public/image/users/${item}`}
+                                        key={index}
+                                            style={styles.innerImage}
+                                            src={`${apiConfig.url}/public/image/users/${item}`}
                                         />
                                     ))
-
                                     }
                                 </View>
-
                             </View>
                         ))}
                     </View>

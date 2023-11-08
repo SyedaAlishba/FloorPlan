@@ -133,6 +133,10 @@
   .TextfieldStyle-small {
     width: 100%;
   }
+.error-message{
+  color: red;
+}
+
 
   /* This CSS rule targets the option text color */
 .react-select__menu-list .react-select__option {
